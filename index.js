@@ -1,94 +1,76 @@
-
 //Calculate point for each person in each work group
 //Display these numbers in each input onchange
 //Multiply points by points per dollar for each individual.
-
-
 function calculate() {
+  //money totals
+  let totalPoints = 0;
+  //servers
+  let form1 = document.getElementById("servers").elements;
 
-let totalPoints = 0;
+  for (let i = 0; i < form1.length; i++) {
+    let shours = form1[i].value * 2;
+    form1[i].value = (shours).toFixed(2);
+    totalPoints += shours;
+  }
+  let form2 = document.getElementById("bussers").elements;
 
+  for (let i = 0; i < form2.length; i++) {
+    let bhours = form2[i].value * 1;
+    form2[i].value = (bhours).toFixed(2);
+    totalPoints += bhours;
+  }
+  let form3 = document.getElementById("expo").elements;
 
-//servers
+  for (let i = 0; i < form3.length; i++) {
+    let ehours = form3[i].value * 1.25;
+    form3[i].value = (ehours).toFixed(2);
+    totalPoints += ehours;
+  }
+  let form4 = document.getElementById("hosts").elements;
 
-let s1 = document.getElementById("s1").value * 2;
-totalPoints += s1;
-let s2 = document.getElementById("s2").value * 2;
-totalPoints += s2;
-let s3 = document.getElementById("s3").value * 2;
-totalPoints += s3;
-let s4 = document.getElementById("s4").value * 2;
-totalPoints += s4;
-let s5 = document.getElementById("s5").value * 2;
-totalPoints += s5;
-let s6 = document.getElementById("s6").value * 2;
-totalPoints += s6;
-let s7 = document.getElementById("s7").value * 2;
-totalPoints += s7;
-let s8 = document.getElementById("s8").value * 2;
-totalPoints += s8;
-let s9 = document.getElementById("s9").value * 2;
-totalPoints += s9;
-let s10 = document.getElementById("s10").value * 2;
-totalPoints += s10;
+  for (let i = 0; i < form4.length; i++) {
+    let hhours = form4[i].value / 2;
+    form4[i].value = (hhours).toFixed(2);
+    totalPoints += hhours;
+  }
 
-//bussers
-let b1 = document.getElementById("b1").value * 1;
-totalPoints += b1;
-let b2 = document.getElementById("b2").value * 1;
-totalPoints += b2;
-let b3 = document.getElementById("b3").value * 1;
-totalPoints += b3;
-let b4 = document.getElementById("b4").value * 1;
-totalPoints += b4;
-let b5 = document.getElementById("b5").value * 1;
-totalPoints += b5;
-let b6 = document.getElementById("b6").value * 1;
-totalPoints += b6;
+  let totalTips = document.getElementById("totaltips").value;
+  let kitchenTips = Math.floor(totalTips / 10);
+  let fohTips = totalTips - kitchenTips;
+  let pointsPerDollar = Math.floor((fohTips / totalPoints) * 100) / 100;
 
+  document.getElementById("kitchentips").innerHTML = kitchenTips;
+  document.getElementById("fohtips").innerHTML = fohTips;
+  document.getElementById("totalpoints").innerHTML = totalPoints.toFixed(2);
+  document.getElementById("pointsperdollar").innerHTML = pointsPerDollar;
 
-//expo
-let e1 = document.getElementById("e1").value * 1.25;
-totalPoints += e1;
+  //final tip calcutation
+  //servers
 
-//host
-let h1 = document.getElementById("h1").value / 2;
-totalPoints += h1;
-let h2 = document.getElementById("h2").value / 2;
-totalPoints += h2;
+  for (let i = 0; i < form1.length; i++) {
+    let stips = (form1[i].value * pointsPerDollar).toFixed(2);
+    form1[i].insertAdjacentHTML("afterend", "$" + stips)
 
-let totalTips = document.getElementById("totaltips").value;
-let kitchenTips = Math.floor(totalTips / 10)
-let fohTips = totalTips - kitchenTips;
-let pointsPerDollar = (fohTips / totalPoints).toFixed(2);
+  }
+  for (let i = 0; i < form2.length; i++) {
+    let btips = (form2[i].value * pointsPerDollar).toFixed(2);
+    form2[i].insertAdjacentHTML("afterend", "$" + btips)
+  }
+  for (let i = 0; i < form3.length; i++) {
+    let etips = (form3[i].value * pointsPerDollar).toFixed(2);
+    form3[i].insertAdjacentHTML("afterend", "$" + etips)
 
-document.getElementById("kitchentips").innerHTML = kitchenTips;
-document.getElementById("fohtips").innerHTML = fohTips;
-document.getElementById("totalpoints").innerHTML = totalPoints.toFixed(2);
-document.getElementById("pointsperdollar").innerHTML = pointsPerDollar;
+  }
+  for (let i = 0; i < form4.length; i++) {
+    let htips = (form4[i].value * pointsPerDollar).toFixed(2);
+    form4[i].insertAdjacentHTML("afterend", "$" + htips)
 
-//final tip calcutation
-//servers
-document.getElementById("sv1").innerHTML = "SERVER 1: $" + (s1 * pointsPerDollar).toFixed(2);
-document.getElementById("sv2").innerHTML = "SERVER 2: $" + (s2 * pointsPerDollar).toFixed(2);
-document.getElementById("sv3").innerHTML = "SERVER 3: $" + (s3 * pointsPerDollar).toFixed(2);
-document.getElementById("sv4").innerHTML = "SERVER 4: $" + (s4 * pointsPerDollar).toFixed(2);
-document.getElementById("sv5").innerHTML = "SERVER 5: $" + (s5 * pointsPerDollar).toFixed(2);
-document.getElementById("sv6").innerHTML = "SERVER 6: $" + (s6 * pointsPerDollar).toFixed(2);
-document.getElementById("sv7").innerHTML = "SERVER 7: $" + (s7 * pointsPerDollar).toFixed(2);
-document.getElementById("sv8").innerHTML = "SERVER 8: $" + (s8 * pointsPerDollar).toFixed(2);
-document.getElementById("sv9").innerHTML = "SERVER 9: $" + (s9 * pointsPerDollar).toFixed(2);
-document.getElementById("sv10").innerHTML = "SERVER 10: $" + (s10 * pointsPerDollar).toFixed(2);
-//bussers
-document.getElementById("bs1").innerHTML = "BUSSER 1: $" + (b1 * pointsPerDollar).toFixed(2);
-document.getElementById("bs2").innerHTML = "BUSSER 2: $" + (b2 * pointsPerDollar).toFixed(2);
-document.getElementById("bs3").innerHTML = "BUSSER 3: $" + (b3 * pointsPerDollar).toFixed(2);
-document.getElementById("bs4").innerHTML = "BUSSER 4: $" + (b4 * pointsPerDollar).toFixed(2);
-document.getElementById("bs5").innerHTML = "BUSSER 5: $" + (b5 * pointsPerDollar).toFixed(2);
-document.getElementById("bs6").innerHTML = "BUSSER 6: $" + (b6 * pointsPerDollar).toFixed(2);
-//expo
-document.getElementById("ex1").innerHTML = "EXPO: $" + (e1 * pointsPerDollar).toFixed(2);
-//hosts
-document.getElementById("ht1").innerHTML = "HOST 1: $" + (h1 * pointsPerDollar).toFixed(2);
-document.getElementById("ht2").innerHTML = "HOST 2: $" + (h2 * pointsPerDollar).toFixed(2);
+  }
+}
+
+function convert(time) {
+  let hoursMinutes = time.split(/[.:]/);
+  let hours = parseInt(hoursMinutes[0], 10);
+  let minutes = hoursMinutes[1] ? parseFloat(hoursMinutes[1], 10) : 0;
+  return (hours + (minutes / 60));
 }

@@ -1,17 +1,32 @@
 body {
-  font-family: 'Ubuntu Mono', monospace;
-  background-color: #FBDA61;
-background-image: linear-gradient(45deg, #FBDA61 0%, #FF5ACD 100%);
-
+  font-family:'Titillium Web', sans-serif;
+  background-color: #f8eee7;
+  color: #95618d;
+  font-weight: bolder;
+  padding-right: 100px;
+}
+h1 {
+  font-weight: bolder;
+  text-decoration: underline;
+}
+h2 {
+  font-weight: bolder;
+  text-decoration: underline;
 }
 button {
   border-radius: 8px;
-  background-color: #fd93a2;
+  background-color: #95618d;
   width: 100px;
   height: 40px;
-  color: white;
+  color: #fec7b8;
 }
 input {
-  background-color: #fd93a2;
-  color: white;
+  background-color: #fec7b8;
+  color: #95618d;
+  outline-color: #fec7b8;
+  border-radius: 30px;
+}
+.div1 {
+  float: right;
+  text-decoration: underline;
 }
