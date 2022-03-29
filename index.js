@@ -1,8 +1,8 @@
-//Calculate point for each person in each work group
-//Display these numbers in each input onchange
-//Multiply points by points per dollar for each individual.
+
+
+
 function calculate() {
-  //money totals
+
   let totalPoints = 0;
   //servers
   let form1 = document.getElementById("servers").elements;
@@ -34,7 +34,15 @@ function calculate() {
     totalPoints += hhours;
   }
 
-  let totalTips = document.getElementById("totaltips").value;
+  let tipForm = document.getElementById("tips").elements;
+  let totalTips = 0;
+
+  for (let i = 0; i < tipForm.length; i++) {
+    let tips = tipForm[i].value * 1;
+    totalTips += tips;
+  }
+
+  let tipDisplay = document.getElementById("totaltips").innerHTML = totalTips;
   let kitchenTips = Math.floor(totalTips / 10);
   let fohTips = totalTips - kitchenTips;
   let pointsPerDollar = Math.floor((fohTips / totalPoints) * 100) / 100;
@@ -49,28 +57,28 @@ function calculate() {
 
   for (let i = 0; i < form1.length; i++) {
     let stips = (form1[i].value * pointsPerDollar).toFixed(2);
-    form1[i].insertAdjacentHTML("afterend", "$" + stips)
+    form1[i].insertAdjacentHTML("afterend", "$" + stips);
 
   }
   for (let i = 0; i < form2.length; i++) {
     let btips = (form2[i].value * pointsPerDollar).toFixed(2);
-    form2[i].insertAdjacentHTML("afterend", "$" + btips)
+    form2[i].insertAdjacentHTML("afterend", "$" + btips);
   }
   for (let i = 0; i < form3.length; i++) {
     let etips = (form3[i].value * pointsPerDollar).toFixed(2);
-    form3[i].insertAdjacentHTML("afterend", "$" + etips)
+    form3[i].insertAdjacentHTML("afterend", "$" + etips);
 
   }
   for (let i = 0; i < form4.length; i++) {
     let htips = (form4[i].value * pointsPerDollar).toFixed(2);
-    form4[i].insertAdjacentHTML("afterend", "$" + htips)
-
+    form4[i].insertAdjacentHTML("afterend", "$" + htips);
   }
 }
-
-function convert(time) {
-  let hoursMinutes = time.split(/[.:]/);
-  let hours = parseInt(hoursMinutes[0], 10);
-  let minutes = hoursMinutes[1] ? parseFloat(hoursMinutes[1], 10) : 0;
-  return (hours + (minutes / 60));
-}
+/*
+  function convert(time) {
+    let hoursMinutes = time.split(/[.:]/);
+    let hours = parseInt(hoursMinutes[0], 10);
+    let minutes = hoursMinutes[1] ? parseFloat(hoursMinutes[1], 10) : 0;
+    return (hours + (minutes / 60));
+  }
+*/
