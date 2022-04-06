@@ -1,6 +1,3 @@
-
-
-
 function calculate() {
 
   let totalPoints = 0;
@@ -8,28 +5,32 @@ function calculate() {
   let form1 = document.getElementById("servers").elements;
 
   for (let i = 0; i < form1.length; i++) {
-    let shours = form1[i].value * 2;
+    let value = convert(form1[i].value);
+    let shours = value * 2;
     form1[i].value = (shours).toFixed(2);
     totalPoints += shours;
   }
   let form2 = document.getElementById("bussers").elements;
 
   for (let i = 0; i < form2.length; i++) {
-    let bhours = form2[i].value * 1;
+    let value2 = convert(form2[i].value);
+    let bhours = value2 * 1;
     form2[i].value = (bhours).toFixed(2);
     totalPoints += bhours;
   }
   let form3 = document.getElementById("expo").elements;
 
   for (let i = 0; i < form3.length; i++) {
-    let ehours = form3[i].value * 1.25;
+    let value3 = convert(form3[i].value);
+    let ehours = value3 * 1.25;
     form3[i].value = (ehours).toFixed(2);
     totalPoints += ehours;
   }
   let form4 = document.getElementById("hosts").elements;
 
   for (let i = 0; i < form4.length; i++) {
-    let hhours = form4[i].value / 2;
+    let value4 = convert(form4[i].value);
+    let hhours = value4 / 2;
     form4[i].value = (hhours).toFixed(2);
     totalPoints += hhours;
   }
@@ -56,6 +57,7 @@ function calculate() {
   //servers
 
   for (let i = 0; i < form1.length; i++) {
+    // let value = convert(form1[i].value)
     let stips = (form1[i].value * pointsPerDollar).toFixed(2);
     form1[i].insertAdjacentHTML("afterend", "$" + stips);
 
@@ -74,11 +76,11 @@ function calculate() {
     form4[i].insertAdjacentHTML("afterend", "$" + htips);
   }
 }
-/*
-  function convert(time) {
-    let hoursMinutes = time.split(/[.:]/);
-    let hours = parseInt(hoursMinutes[0], 10);
-    let minutes = hoursMinutes[1] ? parseFloat(hoursMinutes[1], 10) : 0;
-    return (hours + (minutes / 60));
-  }
-*/
+
+function convert(time) {
+  if(!time) return 0;
+  let hoursMinutes = time.split(/[.:]/);
+  let hours = parseInt(hoursMinutes[0], 10);
+  let minutes = hoursMinutes[1] ? parseFloat(hoursMinutes[1], 10) : 0;
+  return (hours + (minutes / 60));
+}
