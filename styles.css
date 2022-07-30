@@ -1,6 +1,6 @@
 body {
   font-family:'Titillium Web', sans-serif;
-  background-color: #f8eee7;
+  background-color: #d1d7dc;
   color: #95618d;
   font-weight: bolder;
   padding-right: 100px;
@@ -18,12 +18,12 @@ button {
   background-color: #95618d;
   width: 100px;
   height: 40px;
-  color: #fec7b8;
+  color: #F3F3F2;
 }
 input {
-  background-color: #fec7b8;
+  background-color: #F3F3F2;
   color: #95618d;
-  outline-color: #fec7b8;
+  outline-color: #95618d;
   border-radius: 30px;
 }
 .div1 {
