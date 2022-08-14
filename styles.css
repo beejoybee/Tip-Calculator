@@ -21,10 +21,14 @@ button {
   color: #F3F3F2;
 }
 input {
-  background-color: #F3F3F2;
+  background-color:  #E3DEE4;
   color: #95618d;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: groove;
   outline-color: #95618d;
-  border-radius: 30px;
+  border-radius: 10px;
 }
 .div1 {
   float: right;
